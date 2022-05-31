@@ -1,13 +1,78 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#game {
+  display: grid;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  grid-template: 
+  [row1-start] "resource-counter resources-per-second" 15px [row1-end]
+  [row2-start] "grid grid" 800px [row2-end]
+  [row3-start] "build-button clear-button" 50px [row3-end];
+  row-gap: 5px;
+  column-gap: 5px;
+  justify-content: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#grid {
+  grid-area: grid;
+}
+
+.game-options-button {
+    width: 160px;
+    height: 50px;
+    clip-path: polygon(25% 0, 100% 0, 75% 100%, 0% 100%);
+    background-image: linear-gradient(180deg, #669999, #709090);
+    justify-self: center;
+}
+
+#submit {
+    grid-area: build-button;
+}
+
+#clear {
+    grid-area: clear-button;
+}
+
+#resourceCounter{
+    grid-area: resource-counter;
+    justify-self: center;
+}
+
+#resourcesPerSecondCounter {
+    grid-area: resources-per-second;
+    justify-self: center;
+}
+
+button[class*="cell"] {
+  grid-row: auto;
+  grid-column: auto;
+  width: 20px;
+  height: 20px;
+  border-width: 5px;
+  border-radius: 30%;
+  display: flex;
+  justify-content: center;
+  transition: background-color 300ms;
+}
+
+div[class*="resourceNode"] {
+  display: inline;
+  vertical-align: middle;
+  line-height: 10px;
+}
+
+button[class*="alive"] {
+  background-color: green;
+}
+
+button[class*="dead"] {
+  background-color: white;
+}
+
+button[class*="dying"] {
+  border-color: red;
+}
+
+button[class*="living"] {
+  border-color: yellow;
 }
